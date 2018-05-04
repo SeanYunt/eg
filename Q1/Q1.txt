@@ -1,0 +1,35 @@
+question:
+
+You have been given 2 special, extremely rugged Xboxes. You are in an office building
+that is 120 stories high. Using the fewest possible number of drops from windows in
+your office building, determine the highest floor you can drop an Xbox from and have it
+survive: for example, they might be able to take the drop from the 30th floor, but not
+the 31st. You can break both Xboxes in your search. State the worst case number of
+drops needed and explain how you arrived at that answer.
+
+solution:
+
+This immediately reminded me of the number guessing game where a human thinks of a number between 1 and N.
+The software "guesses" and the human either responds with "correct", "less" or "greater".  
+e.g. Choose a number between 1 and 120 (floors).
+Program guesses 60, which is roughly the middle.  If the number is greater, program would guess 90, or if lower, 30, etc.
+This goes on, dividing the problem set in half until the exact value is determined.
+
+The major difference with our ruggedized Xboxes, is that we only have 2 chances in the worst case. Let me explain more...
+
+The safe, but brute force solution to measuring the maximum height an xbox can survive is to start at the floor #1 and increment until it breaks.
+That has a time complexity of O(n).
+We obviously cannot do the opposite, and start are floor #120 and work down. Suppose we did and it broke on floor 119, and the next xbox broke on 118, we could not know how high was "too high".
+
+I would propose a compromise approach, knowing we only have 2 xboxes available.
+
+1) drop the first xbox from floor #60
+2) if it survives, drop the same xbox from floor #90.
+2a) if it survives floor #90, jump to #105, and so on
+2b) if it breaks, switch to the other xbox and work up one floor at a time until it breaks or all floors have been tested.
+3) this gives us a worst case of 60 drop assuming it survives up to floor #120
+4) this improves our worst case time complexity from O(n) if we used a for-i loop to O(n/2)
+
+
+
+

@@ -15,7 +15,7 @@ public class Q4Test {
 
 	   @DataProvider(name = "test1")
 	   public static Object[][] inputs() {
-	      return new Object[][] {{4, 2, "100"}, {10, 10, "10"}, {15, 16, "F"}, {0,0,"0"}};
+	      return new Object[][] {{4, 2, "100"}, {10, 10, "10"}, {1, 16, "1"}, {0,0,"0"},{1, 2, "1"},{7, 2, "111"},{2, 8, "2"}};
 	   }	
 	
   @Test(dataProvider = "test1")
