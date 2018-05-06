@@ -1,0 +1,60 @@
+Test specification for Github API: list public repros for a given user
+
+Scope and Assumptions
+
+Github production API is live and available.
+Known good user accounts will be used for happy path
+Non-existing user accounts
+Bad syntax values for user accounts
+
+Tools
+Java+TestNG unit testing framework.
+RestAssured HTTP library for RESTful test assertions
+
+Rationale for tool selection 
+
+TestNG
+Many, many tools are able to programmatically deal with the output format from JUnit/TestNG. These include IDEs, and CI/CD tools like Jenkins.
+This immediately spares us much work to manage result reporting. TestNG also supports the DataProvider pattern, where we can execute our tests in a "for each" pattern.
+The parameter inputs for this data driven tests can be statically defined in the test code, read from external I/O (file, DB) or potentially dynamically generated at runtime.
+
+RestAssured
+While there exist many HTTP clients that work well within the TestNG unit test framework, given the REST api we are testing, RestAssured gives us some helpful abstractions.
+When writing the test, you can use a behavioral driven approach, similar to how a test case might be read in English.
+For example:
+
+	public void testAcccountExists() throws Exception {
+		RestAssured.given().
+		header("Accept", "application/vnd.github.v3+json"	). 
+	    when().
+	        get("https://api.github.com/users/SeanYunt/repos").
+	    then().
+            contentType(ContentType.JSON).
+	    	statusCode(200).
+	    	body("owner.login[0]",equalTo("SeanYunt"));
+	} 
+
+Using that pattern we can quickly introduce new test cases that are driven by input parameters like HTTP headers, query parameters and paths.
+It would also be trivial to pair expected values for assertions with input parameters.
+
+Test Cases
+
+Given a user account "SeanYunt" make an HTTP GET request to https://api.github.com/users/SeanYunt/repos
+then verify the following:
+
+HTTP response code == 200
+A valid JSON document is returned
+For the first project in the document verify the following JSONPath values:
+owner.login == SeanYunt
+id == 118155790
+name == Apex_Sandbox
+full_name == SeanYunt/Apex_Sandbox
+html_url == https://github.com/SeanYunt/Apex_Sandbox
+private == false
+default_branch == master
+... and so on for all mandatory elements in the JSON
+
+
+
+
+
