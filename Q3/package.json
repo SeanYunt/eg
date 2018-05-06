@@ -1,0 +1,17 @@
+{
+  "name": "remove_word",
+  "version": "1.0.0",
+  "description": "remove a word from a sentence",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.15.1",
+    "mocha": "^5.1.1"
+  }
+}
