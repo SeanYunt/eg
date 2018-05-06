@@ -16,17 +16,17 @@ public class Q2Test {
 	@DataProvider(name = "userNames")
 	public static Object[][] userNamesInputs() {
 		return new Object[][] {{"happypeter"}, {"evilsocket"}, {"JohnSundell"},{"SeanYunt"}};
-    }
+    	}
 	
 	@DataProvider(name = "badUserNames")
 	public static Object[][] badUserNamesInputs() {
 		return new Object[][] {{""}, {" "}, {"___"}};
-    }
+    	}
 	
 	@DataProvider(name = "nonExistingUsers")
 	public static Object[][] nonExistingUsersInputs() {
 		return new Object[][] {{"99999999999999999999"}, {"QWEERTYUIOP"}, {"HisRoyalHighnessThePrincePhilip"}};
-    }
+    	}
 	
 	//test that each userName exists and has at least one project
 	@Test(dataProvider = "userNames")
@@ -90,5 +90,5 @@ public class Q2Test {
 	    	body("full_name[0]", equalTo("SeanYunt/Apex_Sandbox")).
 	    	body("html_url[0]", equalTo("https://github.com/SeanYunt/Apex_Sandbox")).
 	    	body("default_branch[0]", equalTo("master"));	
-		}
+	}
 }
