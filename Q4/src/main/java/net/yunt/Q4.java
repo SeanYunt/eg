@@ -6,8 +6,8 @@ public class Q4 {
 		if(value == 0) return "0";
         	StringBuilder buffer = new StringBuilder();
         	while (value > 0){
-        	buffer.append(value % base);
-            	value = value/base;
+        		buffer.append(value % base);
+            		value = value/base;
         	}	
         	return buffer.reverse().toString();
 	}
