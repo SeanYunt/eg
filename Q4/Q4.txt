@@ -1,0 +1,32 @@
+Q4. Write the code for the following function, without using any built-in functions. Java or
+C# is preferred). 
+
+String itoa(int value, int base);
+
+Where value is the integer to convert, and base is octal, decimal, or hex.
+Please include any tests that are necessary to validate this function using the automated
+test library of your choice.
+
+ASSUMPTIONS
+
+Java is probably the language I have the most experience with, and I am familiar with various helper libraries that would have made this simple.
+However I wanted to challenge myself and implement this from scratch.
+
+CHALLENGES
+
+I only got this partially working. The number bases convert nicely when the string output uses decimal digits.
+I couldn't find a clean way in to incorporate non-decimal digits.
+e.g. 10 decimal would be "a" in hexadecimal.
+For integrity sake I left the failing test in the suite.
+
+I experimented with mapping to an array of characters and incrementing an index to track where the number base system ended, but that introduced more bugs than this limited implementation.  I do think that was the correct course to pursue if I were to continue.
+
+
+PROJECT NOTES
+
+For the implementation please see: src/main/java/net/yunt/Q4.java
+
+The test is located at: src/test/java/net/yunt/Q4Test.java
+
+To execute the test please run:
+mvn install

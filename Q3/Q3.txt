@@ -1,0 +1,69 @@
+Q3. Write the code for a function to remove a particular word from a sentence in any 2
+scripting language (Python, NodeJS or Groovy are recommended, but any scripting
+language is allowed). Additionally, write a suite of unit tests for the function in both
+languages, using the automated test library of your choice.
+
+For this problem I chose to implement the function in Python and NodeJS.
+I have much less experience with Python, so I took this as an opportunity to get familiar with the testing frameworks.
+
+My original implementation and test suite was done in NodeJS.  
+
+ASSUMPTIONS:
+the script language/runtime I chose had an appropriate function library from replacing test.
+I did not take into consideration the runtime performance for this.  
+I used a basic string replacement function.
+(see: remove_word.js)
+ 
+To prove this worked, I wanted both an automated test suite, and manual driver I could launch from a shell.
+The shell script was a helpful way to interactively do some tests, and prove out that I'd properly exported the function.
+(see: shell_remove_word.js)
+
+Finally the test suite uses the Mocha framework.  One of my favorite things about mochas is the clear console results output it has.
+This is convenient for CI/CD build pipelines where you often have to remove console logs.
+(see: test/test_remove_word.js)
+
+The tests I chose to implement are not exhaustive, but instead cover a diversity of input parameters.
+(output from "npm test" is below):
+
+  remove word from sentence
+    happy path
+      √ simple case
+    edge case
+      √ longer with punctuation
+    edge case
+      √ single word
+    i18n
+      √ traditional Chinese
+    i18n
+      √ French
+
+
+  5 passing (45ms)
+
+Being satisfied with the mechanics of my project, I then set out to implement this in Python.
+The respective source file parallel everything I did in NodeJS.
+
+Please see:
+remove_word.py
+shell_remove_word.py
+test_remove_word.py
+
+To execute please run:
+
+python -m unittest
+
+I also came across an easy to use code coverage tool for python:
+
+$ coverage run test_remove_word.py
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK
+
+$ coverage report test_remove_word.py
+Name                  Stmts   Miss  Cover
+-----------------------------------------
+test_remove_word.py      15      0   100%
+
+  

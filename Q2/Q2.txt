@@ -54,6 +54,10 @@ private == false
 default_branch == master
 ... and so on for all mandatory elements in the JSON
 
+please find included test suite at src/test/java/net/yunt/Q2Test.java
+excute by running: mvn install
+from this directory
+
 
 
 
